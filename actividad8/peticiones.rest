@@ -1,0 +1,56 @@
+@url = http://localhost:3000/api
+
+
+
+##############POSTS##############
+
+
+GET {{url}}/posts
+# Respuesta esperada: Lista de posts con datos del autor.
+
+
+###
+
+
+GET {{url}}/posts/author/26
+# Respuesta esperada: Lista de posts escritos por un autor en concreto.
+
+
+###
+
+
+POST {{url}}/posts
+Content-Type: application/json
+
+{
+    "titulo": "HTML",
+    "descripcion": "Introducción a HTML",
+    "categoria": "Maquetación",
+    "autor_id": 23
+}
+
+# Respuesta esperada: Inserta un nuevo post. Devuelve el post creado con sus datos.
+# Error esperado: 400 si el título ya existe, si el autor no corresponde a un autor existente o si los campos no están rellenados.
+
+
+
+##############AUTHORS##############
+
+
+GET {{url}}/autores
+# Respuesta esperada: Lista de autores con sus datos.
+
+###
+
+
+POST {{url}}/autores
+Content-Type: application/json
+
+{
+    "nombre": "Manuel López",
+    "email": "manuel.lopez@gmail.com",
+    "imagen": "https://ejemplo.com/img/manuel.jpg"
+}
+
+# Respuesta esperada: Inserta un nuevo autor. Devuelve el autor creado con sus datos.
+# Error esperado: 400 si el email ya está registrado o si los campos no están rellenados.
